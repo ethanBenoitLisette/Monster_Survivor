@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -12,9 +13,15 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float timeToIncreaseSpawnRate = 30f;
     [SerializeField] private float spawnRateIncreaseAmount = 0.1f;
     [SerializeField] private Transform player;
+    [SerializeField] private TMP_Text enemyCounterText;
+    [SerializeField] private TMP_Text levelText;
+    [SerializeField] private GameObject levelHUD;
 
     private Camera mainCamera;
     private float timeElapsed = 0f;
+    private int enemyCounter = 0;
+    private int enemiesToNextLevel = 20; // Nombre initial d'ennemis à tuer
+    private int currentLevel = 1;
 
     private void Start()
     {
@@ -29,7 +36,7 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitUntil(() => IsEnemyOffScreen());
 
             Vector3 spawnPosition = GetRandomSpawnPosition();
-            GameObject enemyToSpawn = Random.Range(0, 4) == 0 ? archerPrefab : enemyPrefab; // 1 chance sur 6 pour qu'un archer apparaisse
+            GameObject enemyToSpawn = Random.Range(0, 4) == 0 ? archerPrefab : enemyPrefab;
 
             Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
 
@@ -67,11 +74,34 @@ public class EnemySpawner : MonoBehaviour
         return spawnPosition;
     }
 
-
-
     private bool IsPositionOffScreen(Vector3 position)
     {
         Vector3 screenPoint = mainCamera.WorldToViewportPoint(position);
         return screenPoint.x < 0 || screenPoint.x > 1 || screenPoint.y < 0 || screenPoint.y > 1;
+    }
+
+    public void EnemyKilled()
+    {
+        enemyCounter++;
+        enemyCounterText.text = "Ennemis tués : " + enemyCounter + " / " + enemiesToNextLevel;
+
+        if (enemyCounter >= enemiesToNextLevel)
+        {
+            NextLevel();
+        }
+    }
+
+    private void NextLevel()
+    {
+        spawnInterval = 2f;
+        enemyCounter = 0;
+        enemyCounterText.text = "Ennemis tués : " + enemyCounter + " / " + enemiesToNextLevel;
+
+        // Augmenter le nombre d'ennemis nécessaires pour passer au niveau suivant
+        enemiesToNextLevel += 5;
+
+        currentLevel++;
+        levelText.text = "Niveau " + currentLevel;
+        levelHUD.SetActive(true);
     }
 }

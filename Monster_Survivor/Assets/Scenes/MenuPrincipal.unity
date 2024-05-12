@@ -1258,11 +1258,11 @@ MonoBehaviour:
   levelMeleeText: {fileID: 1106708457}
   levelDistanceText: {fileID: 2113641502}
   levelMoneyText: {fileID: 1530925691}
-  levelEffectText: {fileID: 1203646509}
+  levelLifeText: {fileID: 1203646509}
   priceMeleeText: {fileID: 587596414}
   priceDistanceText: {fileID: 15426691}
   priceMoneyText: {fileID: 2109669922}
-  priceEffectText: {fileID: 2074865684}
+  priceLifeText: {fileID: 2074865684}
   scoreManagerObject: {fileID: 97051130}
 --- !u!1 &573003942
 GameObject:
@@ -2643,7 +2643,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1172601554
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2661,8 +2661,8 @@ RectTransform:
   - {fileID: 999078827}
   - {fileID: 942120695}
   - {fileID: 2026909476}
-  - {fileID: 641141822}
   - {fileID: 1229332648}
+  - {fileID: 641141822}
   - {fileID: 437239099}
   - {fileID: 1237298762}
   m_Father: {fileID: 339580947}
@@ -3337,7 +3337,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1431596070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3569,7 +3569,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.000032425, y: 13.619}
-  m_SizeDelta: {x: 58.5721, y: 95.238}
+  m_SizeDelta: {x: 90, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1615679625
 MonoBehaviour:
@@ -3591,7 +3591,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 1124599a54c030a409a3a88c8ed10ae2, type: 3}
+  m_Texture: {fileID: 2800000, guid: 8dddea5f29dd83341874bb4669be725e, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0

@@ -1,5 +1,5 @@
 using UnityEngine;
-using System.Collections; // Ajouter cette ligne pour résoudre l'erreur
+using System.Collections;
 
 public class EnemyStats : MonoBehaviour
 {
@@ -9,12 +9,15 @@ public class EnemyStats : MonoBehaviour
     private float currentDamage;
     private SpriteRenderer spriteRenderer;
     private Coroutine flashCoroutine;
-    public int scoreValue = 1; 
     private ScoreManager scoreManager;
+    private EnemySpawner enemySpawner;
+    private Shop shop;
 
     void Start()
     {
         scoreManager = FindObjectOfType<ScoreManager>();
+        enemySpawner = FindObjectOfType<EnemySpawner>();
+        shop = FindObjectOfType<Shop>();
     }
 
     void Awake()
@@ -66,7 +69,11 @@ public class EnemyStats : MonoBehaviour
 
     public void Kill()
     {
+        Debug.Log(shop.GetMoneyDamage());
+        Debug.Log(shop.GetDistanceDamage());
         Destroy(gameObject);
-        scoreManager.IncrementScore(scoreValue);
+        scoreManager.IncrementScore(shop.GetMoneyDamage());
+        enemySpawner.EnemyKilled();
     }
+
 }

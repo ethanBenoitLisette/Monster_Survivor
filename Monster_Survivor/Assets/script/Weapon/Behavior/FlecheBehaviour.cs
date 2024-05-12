@@ -10,7 +10,6 @@ public class FlecheBehaviour : ProjectileWeaponBehaviour
 
         DirectionChecker(GetMouseWorldPosition());
 
-        // Trouver le script ShopManager dans la scène
         shopManager = FindObjectOfType<Shop>();
         if (shopManager == null)
         {

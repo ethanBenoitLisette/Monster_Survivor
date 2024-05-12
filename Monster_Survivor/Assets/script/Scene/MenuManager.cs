@@ -9,7 +9,7 @@ public class MenuManager : MonoBehaviour
     public GameObject settingsPanel;
     public void StartGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("MainScene");
         Time.timeScale = 1f;
     }
     public void PauseGame()
@@ -38,7 +38,6 @@ public class MenuManager : MonoBehaviour
     }
     public void QuitGame()
     {
-        Debug.LogWarning("ui");
         Application.Quit();
     }
 }

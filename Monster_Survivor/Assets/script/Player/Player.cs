@@ -7,8 +7,6 @@ public class PlayerMovement : MonoBehaviour
 {
     public Slider healthBar;
     public float moveSpeed;
-    public int maxHealth = 100;
-    public int currentHealth; 
     [HideInInspector]
     public Vector2 moveDir;
     [HideInInspector]
@@ -19,15 +17,26 @@ public class PlayerMovement : MonoBehaviour
     public GameObject losePanel;
 
     private Rigidbody2D rb;
+    private Shop shop; // Référence à la classe Shop
 
     void Start()
     {
-        healthBar.maxValue = maxHealth;
-        healthBar.value = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         lastMovedVector = new Vector2(1, 0f);
 
-        currentHealth = maxHealth;
+        // Trouver et attribuer la référence à la classe Shop
+        shop = FindObjectOfType<Shop>();
+
+        // Assurez-vous que la barre de santé est correctement configurée en fonction de l'amélioration de la vie
+        if (shop != null)
+        {
+            healthBar.maxValue = shop.GetLifeUpgradeDamage();
+            healthBar.value = healthBar.maxValue;
+        }
+        else
+        {
+            Debug.LogError("Shop component not found!");
+        }
     }
 
     void Update()
@@ -47,19 +56,19 @@ public class PlayerMovement : MonoBehaviour
 
         moveDir = new Vector2(moveX, moveY).normalized;
 
-        if(moveDir.x != 0)
+        if (moveDir.x != 0)
         {
             lastHorizontalVector = moveDir.x;
             lastMovedVector = new Vector2(lastHorizontalVector, 0f);    //Last moved X
         }
 
-        if(moveDir.y != 0)
+        if (moveDir.y != 0)
         {
             lastVerticalVector = moveDir.y;
             lastMovedVector = new Vector2(0f, lastVerticalVector);  //Last moved Y
         }
 
-        if(moveDir.x != 0 && moveDir.y != 0)
+        if (moveDir.x != 0 && moveDir.y != 0)
         {
             lastMovedVector = new Vector2(lastHorizontalVector, lastVerticalVector);    //While moving
         }
@@ -72,10 +81,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        SetHealth(); // Met à jour la barre de vie après avoir subi des dégâts
+        healthBar.value -= damage;
 
-        if(currentHealth <= 0)
+        if (healthBar.value <= 0)
         {
             Die();
         }
@@ -83,12 +91,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Die()
     {
-        Time.timeScale = 0f; 
+        Time.timeScale = 0f;
         losePanel.SetActive(true);
-    }
-
-    public void SetHealth()
-    {
-        healthBar.value = currentHealth;
     }
 }
