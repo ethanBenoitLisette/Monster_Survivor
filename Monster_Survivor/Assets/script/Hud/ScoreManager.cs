@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
 
     void Start()
     {
-        // Charger le score enregistré ou initialiser à zéro s'il n'y en a pas
+     
         score = PlayerPrefs.GetInt("Score", 0);
         UpdateScoreUI();
         scoreText.text = score.ToString() + " zenni";
@@ -18,7 +18,6 @@ public class ScoreManager : MonoBehaviour
     {
         score += points;
         UpdateScoreUI();
-        // Enregistrer le score à chaque modification
         PlayerPrefs.SetInt("Score", score);
         PlayerPrefs.Save();
     }
@@ -27,7 +26,6 @@ public class ScoreManager : MonoBehaviour
     {
         score -= points;
         UpdateScoreUI();
-        // Enregistrer le score à chaque modification
         PlayerPrefs.SetInt("Score", score);
         PlayerPrefs.Save();
     }

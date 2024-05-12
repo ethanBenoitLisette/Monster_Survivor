@@ -8,7 +8,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Start()
     {
-        playerMovement = FindObjectOfType<PlayerMovement>(); // Trouver le script PlayerMovement dans la scène
+        playerMovement = FindObjectOfType<PlayerMovement>(); 
     }
 
     void Update()

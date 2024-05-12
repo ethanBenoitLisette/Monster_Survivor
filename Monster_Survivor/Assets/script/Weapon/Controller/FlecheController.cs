@@ -13,7 +13,7 @@ public class FlecheController : WeaponController
     {
         base.Attack();
         GameObject spawnedFleche = Instantiate(weaponData.Prefab);
-        spawnedFleche.transform.position = transform.position; //Assign the position to be the same as this object which is parented to the player
-        spawnedFleche.GetComponent<FlecheBehaviour>().DirectionChecker(pm.lastMovedVector);   //Reference and set the direction
+        spawnedFleche.transform.position = transform.position; 
+        spawnedFleche.GetComponent<FlecheBehaviour>().DirectionChecker(pm.lastMovedVector);
     }
 }

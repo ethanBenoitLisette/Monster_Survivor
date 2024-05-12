@@ -37,7 +37,7 @@ public class Enemydistance : MonoBehaviour
         if (player != null && Vector3.Distance(transform.position, player.transform.position) <= fireDistance)
         {
             Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-            isInRange = true; // Le joueur est à portée de tir, donc arrête de bouger
+            isInRange = true; 
         }
         else {
             isInRange = false;

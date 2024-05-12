@@ -6,18 +6,15 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     public Slider healthBar;
-    private Shop shop; // Référence à la classe Shop
+    private Shop shop; 
 
     private void Start()
     {
-        // Trouver et attribuer la référence à la classe Shop
         shop = FindObjectOfType<Shop>();
 
         if (shop != null)
         {
-            // Mettre à jour la valeur maximale de la barre de santé en fonction de l'amélioration de la vie
             healthBar.maxValue = shop.GetLifeUpgradeDamage();
-            // Assurez-vous que la barre de santé est correctement initialisée
             healthBar.value = healthBar.maxValue;
         }
         else

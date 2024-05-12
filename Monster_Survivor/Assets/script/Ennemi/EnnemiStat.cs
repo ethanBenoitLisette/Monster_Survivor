@@ -51,18 +51,18 @@ public class EnemyStats : MonoBehaviour
         int flashCount = 5;
         float flashInterval = flashDuration / flashCount;
 
-        Color originalColor = spriteRenderer.color; // Stocker la couleur d'origine du sprite
+        Color originalColor = spriteRenderer.color; 
 
         for (int i = 0; i < flashCount; i++)
         {
-            spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f); // Appliquer une couleur transparente
+            spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
             yield return new WaitForSeconds(flashInterval);
 
-            spriteRenderer.color = originalColor; // Rétablir la couleur d'origine
+            spriteRenderer.color = originalColor; 
             yield return new WaitForSeconds(flashInterval);
         }
 
-        spriteRenderer.color = originalColor; // Rétablir la couleur d'origine au cas où elle aurait été modifiée
+        spriteRenderer.color = originalColor; 
 
         flashCoroutine = null;
     }

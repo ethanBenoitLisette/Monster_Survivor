@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
     private Camera mainCamera;
     private float timeElapsed = 0f;
     private int enemyCounter = 0;
-    private int enemiesToNextLevel = 20; // Nombre initial d'ennemis à tuer
+    private int enemiesToNextLevel = 20; 
     private int currentLevel = 1;
 
     private void Start()
@@ -97,7 +97,7 @@ public class EnemySpawner : MonoBehaviour
         enemyCounter = 0;
         enemyCounterText.text = "Ennemis tués : " + enemyCounter + " / " + enemiesToNextLevel;
 
-        // Augmenter le nombre d'ennemis nécessaires pour passer au niveau suivant
+        
         enemiesToNextLevel += 5;
 
         currentLevel++;

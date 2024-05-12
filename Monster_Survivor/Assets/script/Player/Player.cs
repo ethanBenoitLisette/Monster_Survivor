@@ -17,17 +17,15 @@ public class PlayerMovement : MonoBehaviour
     public GameObject losePanel;
 
     private Rigidbody2D rb;
-    private Shop shop; // Référence à la classe Shop
+    private Shop shop; 
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         lastMovedVector = new Vector2(1, 0f);
 
-        // Trouver et attribuer la référence à la classe Shop
         shop = FindObjectOfType<Shop>();
 
-        // Assurez-vous que la barre de santé est correctement configurée en fonction de l'amélioration de la vie
         if (shop != null)
         {
             healthBar.maxValue = shop.GetLifeUpgradeDamage();

@@ -79,21 +79,18 @@ public class Shop : MonoBehaviour
                     scoreManager.DecrementScore(upgradeData.price);
                     upgradeData.price += 10;
 
-                    // Vérifier le type d'amélioration
                     if (key == moneyUpgradeKey)
                     {
-                        // Si c'est une amélioration de l'argent, augmenter de 1
                         upgradeData.damage++;
                     }
                     else
                     {
-                        // Sinon, augmenter de 10
                         upgradeData.damage += 10;
                     }
 
                     upgradeData.currentLevel++;
                     UpdateLevelUI();
-                    SaveUpgradeData(key, upgradeData); // Appel de SaveUpgradeData avec les données d'amélioration correctes
+                    SaveUpgradeData(key, upgradeData); 
                 }
                 else
                 {
@@ -163,7 +160,6 @@ public class Shop : MonoBehaviour
             }
         }
 
-        // Mettre à jour l'UI après la réinitialisation
         UpdateLevelUI();
     }
 

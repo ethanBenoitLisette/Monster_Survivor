@@ -15,7 +15,7 @@ public class MapController : MonoBehaviour
     [Header("Optimization")]
     public List<GameObject> spawnedChunks;
     GameObject latestChunk;
-    public float maxOpDist; //Must be greater than the length and width of the tilemap
+    public float maxOpDist; 
     float opDist;
 
 
